@@ -1,5 +1,4 @@
-using System;
-using System.Windows.Forms;
+
 
 namespace ah_ha_moment
 {
@@ -24,8 +23,6 @@ namespace ah_ha_moment
             {
                 GamingScreen game = new GamingScreen();
                 game.Show();
-                //Monitor monitor = new Monitor();
-                //monitor.Show();
                 this.Hide();
                 //settings.Close();
             }

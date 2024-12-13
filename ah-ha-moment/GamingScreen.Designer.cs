@@ -12,7 +12,6 @@ namespace ah_ha_moment
         private System.Windows.Forms.TextBox answerBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Panel questionPanel;
-
         private void InitializeComponent()
         {
             timerLabel = new Label();

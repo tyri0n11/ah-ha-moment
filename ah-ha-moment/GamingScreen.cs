@@ -16,7 +16,7 @@ namespace ah_ha_moment
         private static Random rng = new Random();
         private static List<Quizz> questions = new List<Quizz>();
         private Quizz currentQuiz = null;
-        public static string dataQuestion = "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\aha_dataset.txt";
+        public static string dataQuestion = "C:\\BrainLife Codespace\\ahha-questions.txt";
         
         public GamingScreen()
         {
@@ -29,7 +29,7 @@ namespace ah_ha_moment
 
         private void initQuestion()
         {
-            string pattern = @"\{\[(?<Question>.*?)\],\[(?<Hint>.*?)\],\[(?<Answer>.*?)\]\}";
+            string pattern = @"\{\[(?<Question>.*?)\], \[(?<Hint>.*?)\], \[(?<Answer>.*?)\]\}";
             Regex regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             if (!File.Exists(dataQuestion))
@@ -104,6 +104,7 @@ namespace ah_ha_moment
             {
                 AppManager.isRecord = false;
                 MessageBox.Show($"Quiz completed!\nCorrect: {correctAnswers}\nIncorrect: {incorrectAnswers}", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                countDownTimer.Stop();
                 Dispose();
                 return;
             }
@@ -118,7 +119,8 @@ namespace ah_ha_moment
                 GameSessionData.QuestionOrder = currentProblemIndex + 1;
                 GameSessionData.Question = currentQuiz.Question;
                 GameSessionData.IsCorrect = false;
-
+                countDownTimer.Stop();
+                timeRemaining = TIME_INTERVAL;
                 UpdateTimerDisplay();
                 countDownTimer.Start();
             }

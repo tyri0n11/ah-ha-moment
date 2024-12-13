@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\projects\\ah-ha-moment\\ah-ha-moment\\greetingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:greetingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\projects\\ah-ha-moment\\ah-ha-moment\\gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\projects\\ah-ha-moment\\ah-ha-moment\\monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|C:\\Projects\\ah-ha-moment\\ah-ha-moment\\gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\projects\\ah-ha-moment\\ah-ha-moment\\gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\projects\\ah-ha-moment\\ah-ha-moment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,44 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Monitor.cs",
               "DocumentMoniker": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\Monitor.cs",
               "RelativeDocumentMoniker": "Monitor.cs",
               "ToolTip": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\Monitor.cs",
               "RelativeToolTip": "Monitor.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAIAwwG8AAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAcwDQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T05:30:15.81Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GreetingScreen.cs",
-              "DocumentMoniker": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GreetingScreen.cs",
-              "RelativeDocumentMoniker": "GreetingScreen.cs",
-              "ToolTip": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GreetingScreen.cs",
-              "RelativeToolTip": "GreetingScreen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T15:28:15.606Z",
+              "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GamingScreen.cs [Design]",
-              "DocumentMoniker": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs",
-              "RelativeDocumentMoniker": "GamingScreen.cs",
-              "ToolTip": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs [Design]",
-              "RelativeToolTip": "GamingScreen.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T05:14:59.475Z"
             },
             {
               "$type": "Document",
@@ -81,33 +50,36 @@
               "RelativeDocumentMoniker": "GamingScreen.cs",
               "ToolTip": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs",
               "RelativeToolTip": "GamingScreen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABmAAAAAAAAAA==",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAAwHkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T05:14:44.106Z"
+              "WhenOpened": "2024-12-12T05:14:44.106Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "GamingScreen.Designer.cs",
               "DocumentMoniker": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GamingScreen.Designer.cs",
               "RelativeDocumentMoniker": "GamingScreen.Designer.cs",
               "ToolTip": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\GamingScreen.Designer.cs",
               "RelativeToolTip": "GamingScreen.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwA0AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T04:52:49.028Z"
+              "WhenOpened": "2024-12-12T04:52:49.028Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAiwA0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T04:20:41.847Z"
+              "WhenOpened": "2024-12-12T04:20:41.847Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -52,7 +52,6 @@ namespace ah_ha_moment
         private void btnStartScan_Click(object sender, EventArgs e)
         {
             UpdateStatus("Scanning for devices...");
-            LogToUI("Scanning for devices...");
             lstDevices.Items.Clear();
             btnStartScan.Enabled = false;
             btnStopScan.Enabled = true;
@@ -62,7 +61,6 @@ namespace ah_ha_moment
         private void btnStopScan_Click(object sender, EventArgs e)
         {
             UpdateStatus("Scan stopped.");
-            LogToUI("Scan stopped.");
             btnStartScan.Enabled = true;
             btnStopScan.Enabled = false;
             scanner.Stop();
@@ -87,7 +85,6 @@ namespace ah_ha_moment
                 if (sensor == null)
                 {
                     UpdateStatus("Failed to create sensor instance.");
-                    LogToUI("Failed to create sensor instance.");
                     return;
                 }
                 UpdateStatus($"Connected to {selectedDevice.Name}.");
@@ -101,7 +98,6 @@ namespace ah_ha_moment
             catch (NeuroSDK.SDKException ex)
             {
                 UpdateStatus($"Error creating BLE device: {ex.Message}");
-                LogToUI($"Error creating BLE device: {ex.Message}");
             }
         }
         private async void btnRecord_Click(object sender, EventArgs e)
@@ -123,7 +119,6 @@ namespace ah_ha_moment
             try
             {
                 stopCollectingSignal();
-                screen.Dispose();   
             }
             catch (Exception ex)
             {
@@ -174,6 +169,7 @@ namespace ah_ha_moment
         }
         private void stopCollectingSignal()
         {
+            writer.Flush();
             sensor.ExecCommand(SensorCommand.CommandStopSignal);
             sensor.EventBrainBitSignalDataRecived -= Sensor_EventBrainBitSignalDataRecived;
             LogToUI("Signal data collection stopped.");
