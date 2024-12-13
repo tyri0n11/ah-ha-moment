@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\users\\kn183\\ah-ha-moment\\ah-ha-moment\\monitor.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:monitor.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\users\\kn183\\ah-ha-moment\\ah-ha-moment\\monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:monitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\greetingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:greetingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\users\\kn183\\ah-ha-moment\\ah-ha-moment\\gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:gamingscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\users\\kn183\\ah-ha-moment\\ah-ha-moment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|c:\\users\\kn183\\ah-ha-moment\\ah-ha-moment\\gamingscreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB99A603-EF9D-4410-A1C5-58AC6CEABD15}|ah-ha-moment.csproj|solutionrelative:gamingscreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,22 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Monitor.cs",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Monitor.cs",
-              "RelativeDocumentMoniker": "Monitor.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Monitor.cs",
-              "RelativeToolTip": "Monitor.cs",
-              "ViewState": "AgIAAMgAAAAAAAAAAADwv90AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T05:30:15.81Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -68,67 +26,15 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Monitor.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Monitor.Designer.cs",
-              "RelativeDocumentMoniker": "Monitor.Designer.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Monitor.Designer.cs",
-              "RelativeToolTip": "Monitor.Designer.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAgwLQAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T15:14:22.908Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Monitor.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Monitor.cs",
-              "RelativeDocumentMoniker": "Monitor.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Monitor.cs [Design]",
-              "RelativeToolTip": "Monitor.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T15:05:28.118Z",
-              "EditorCaption": " [Design]"
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GreetingScreen.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GreetingScreen.cs",
-              "RelativeDocumentMoniker": "GreetingScreen.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GreetingScreen.cs [Design]",
-              "RelativeToolTip": "GreetingScreen.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T15:29:13.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -136,47 +42,8 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T04:20:41.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GamingScreen.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GamingScreen.Designer.cs",
-              "RelativeDocumentMoniker": "GamingScreen.Designer.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GamingScreen.Designer.cs",
-              "RelativeToolTip": "GamingScreen.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T04:52:49.028Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GamingScreen.cs",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs",
-              "RelativeDocumentMoniker": "GamingScreen.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs",
-              "RelativeToolTip": "GamingScreen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T05:14:44.106Z",
+              "WhenOpened": "2024-12-13T08:26:55.34Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GamingScreen.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs",
-              "RelativeDocumentMoniker": "GamingScreen.cs",
-              "ToolTip": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\GamingScreen.cs [Design]",
-              "RelativeToolTip": "GamingScreen.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T05:14:59.475Z"
             }
           ]
         }
