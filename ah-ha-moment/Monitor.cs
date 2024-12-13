@@ -1,4 +1,7 @@
 ﻿using NeuroSDK;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace ah_ha_moment
 {
@@ -9,7 +12,7 @@ namespace ah_ha_moment
         private Scanner scanner;
         private StreamWriter writer;
         private String fileName;
-        private String filePath = @"C:\Users\USER\Documents\data-sets\"; //available for Windows
+        private String filePath = @"C:\Users\kn183\OneDrive\Documents\EEG"; //available for Windows
         GreetingScreen screen;
         public Monitor()
         {
@@ -25,10 +28,14 @@ namespace ah_ha_moment
                     {
                         Directory.CreateDirectory(filePath);
                     }
-                    
+
                     writer = new StreamWriter($"{filePath}{fileName}_{getTimestamp()}.csv");
                     writer.WriteLine("Timestamp,O1,O2,T3,T4,Order,Question,IsCorrect");
 
+                    // Fullscreen and responsive settings
+                    this.WindowState = FormWindowState.Maximized;
+                    this.AutoScaleMode = AutoScaleMode.Dpi;
+                    this.MinimumSize = new Size(800, 600); // Set a minimum size
                 }
                 else
                 {
@@ -53,7 +60,7 @@ namespace ah_ha_moment
         private void btnStartScan_Click(object sender, EventArgs e)
         {
             UpdateStatus("Scanning for devices...");
-            LogToUI("Scanning for devices...");
+
             lstDevices.Items.Clear();
             btnStartScan.Enabled = false;
             btnStopScan.Enabled = true;
@@ -63,7 +70,7 @@ namespace ah_ha_moment
         private void btnStopScan_Click(object sender, EventArgs e)
         {
             UpdateStatus("Scan stopped.");
-            LogToUI("Scan stopped.");
+
             btnStartScan.Enabled = true;
             btnStopScan.Enabled = false;
             scanner.Stop();
@@ -79,7 +86,7 @@ namespace ah_ha_moment
 
             selectedDevice = scanner.Sensors[lstDevices.SelectedIndex];
             UpdateStatus($"Connecting to {selectedDevice.Name}...");
-            LogToUI($"Connecting to {selectedDevice.Name}...");
+
 
             try
             {
@@ -88,7 +95,7 @@ namespace ah_ha_moment
                 if (sensor == null)
                 {
                     UpdateStatus("Failed to create sensor instance.");
-                    LogToUI("Failed to create sensor instance.");
+
                     return;
                 }
                 UpdateStatus($"Connected to {selectedDevice.Name}.");
@@ -102,7 +109,7 @@ namespace ah_ha_moment
             catch (NeuroSDK.SDKException ex)
             {
                 UpdateStatus($"Error creating BLE device: {ex.Message}");
-                LogToUI($"Error creating BLE device: {ex.Message}");
+
             }
         }
         private async void btnRecord_Click(object sender, EventArgs e)
@@ -115,7 +122,7 @@ namespace ah_ha_moment
             }
             catch (Exception ex)
             {
-                LogToUI(ex.ToString());
+
             }
 
         }
@@ -124,11 +131,11 @@ namespace ah_ha_moment
             try
             {
                 stopCollectingSignal();
-                screen.Dispose();   
+                screen.Dispose();
             }
             catch (Exception ex)
             {
-                LogToUI(ex.ToString());
+
             }
         }
 
@@ -162,13 +169,13 @@ namespace ah_ha_moment
                     $"{GameSessionData.QuestionOrder},{GameSessionData.Question},{GameSessionData.IsCorrect}";
 
                 UpdateSignal(temp);
-                LogToUI(temp);
+
                 writer.WriteLine(temp);
             }
         }
         private void startCollectingSignal()
         {
-            LogToUI("Starting signal data collection...");
+
             sensor.EventBrainBitSignalDataRecived += Sensor_EventBrainBitSignalDataRecived;
             sensor.ExecCommand(SensorCommand.CommandStartSignal);
 
@@ -177,16 +184,11 @@ namespace ah_ha_moment
         {
             sensor.ExecCommand(SensorCommand.CommandStopSignal);
             sensor.EventBrainBitSignalDataRecived -= Sensor_EventBrainBitSignalDataRecived;
-            LogToUI("Signal data collection stopped.");
+
         }
 
-        private void LogToUI(string message)
-        {
-            Invoke((MethodInvoker)(() =>
-            {
-                txtLog.AppendText($"{DateTime.Now}: {message}{Environment.NewLine}");
-            }));
-        }
+
+
         private void DisplayDeviceInfo(BrainBitSensor sensor)
         {
             txtDeviceInfo.Text = $"Name: {sensor.Name}\r\n" +
@@ -220,7 +222,10 @@ namespace ah_ha_moment
             sensor?.Disconnect();
             sensor?.Dispose();
         }
+        private void txtSignal_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
     }
     public static class AppManager
@@ -229,4 +234,3 @@ namespace ah_ha_moment
     }
 
 }
-

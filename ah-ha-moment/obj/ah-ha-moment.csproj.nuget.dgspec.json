@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj": {}
+    "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj": {
+    "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj",
+        "projectUniqueName": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj",
         "projectName": "ah-ha-moment",
-        "projectPath": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\obj\\",
+        "projectPath": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj",
+        "packagesPath": "C:\\Users\\kn183\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kn183\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -43,7 +43,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -75,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

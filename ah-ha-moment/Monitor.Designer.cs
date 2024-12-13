@@ -9,9 +9,9 @@
         private TextBox txtDeviceInfo;
         private TextBox txtBattery;
         private TextBox txtSignal;
-        private TextBox txtLog;
         private Button btnRecord;
         private Button btnStopRecord;
+        private TableLayoutPanel tableLayoutPanel1;
 
         private void InitializeComponent()
         {
@@ -22,122 +22,183 @@
             txtDeviceInfo = new TextBox();
             txtBattery = new TextBox();
             txtSignal = new TextBox();
-            txtLog = new TextBox();
             btnRecord = new Button();
             btnStopRecord = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnStartScan
             // 
-            btnStartScan.Location = new Point(12, 116);
+            btnStartScan.BackColor = Color.FromArgb(50, 100, 180);
+            btnStartScan.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 130, 210);
+            btnStartScan.FlatStyle = FlatStyle.Flat;
+            btnStartScan.Font = new Font("Segoe UI", 10F);
+            btnStartScan.ForeColor = Color.White;
+            btnStartScan.Location = new Point(15, 15);
+            btnStartScan.Margin = new Padding(5);
             btnStartScan.Name = "btnStartScan";
-            btnStartScan.Size = new Size(100, 30);
+            btnStartScan.Size = new Size(120, 40);
             btnStartScan.TabIndex = 1;
             btnStartScan.Text = "Start Scan";
+            btnStartScan.UseVisualStyleBackColor = false;
             btnStartScan.Click += btnStartScan_Click;
             // 
             // btnStopScan
             // 
+            btnStopScan.BackColor = Color.FromArgb(50, 100, 180);
             btnStopScan.Enabled = false;
-            btnStopScan.Location = new Point(122, 116);
+            btnStopScan.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 130, 210);
+            btnStopScan.FlatStyle = FlatStyle.Flat;
+            btnStopScan.Font = new Font("Segoe UI", 10F);
+            btnStopScan.ForeColor = Color.White;
+            btnStopScan.Location = new Point(496, 15);
+            btnStopScan.Margin = new Padding(5);
             btnStopScan.Name = "btnStopScan";
-            btnStopScan.Size = new Size(100, 30);
+            btnStopScan.Size = new Size(120, 40);
             btnStopScan.TabIndex = 2;
             btnStopScan.Text = "Stop Scan";
+            btnStopScan.UseVisualStyleBackColor = false;
             btnStopScan.Click += btnStopScan_Click;
             // 
             // lstDevices
             // 
-            lstDevices.Location = new Point(12, 189);
+            lstDevices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lstDevices.BackColor = Color.White;
+            lstDevices.Font = new Font("Segoe UI", 10F);
+            lstDevices.FormattingEnabled = true;
+            lstDevices.ItemHeight = 17;
+            lstDevices.Location = new Point(13, 73);
             lstDevices.Name = "lstDevices";
-            lstDevices.Size = new Size(357, 84);
+            lstDevices.Size = new Size(475, 174);
             lstDevices.TabIndex = 3;
             lstDevices.DoubleClick += lstDevices_DoubleClick;
             // 
             // lblStatus
             // 
-            lblStatus.Location = new Point(12, 156);
+            lblStatus.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblStatus.BackColor = Color.FromArgb(180, 200, 230);
+            lblStatus.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblStatus.ForeColor = Color.Black;
+            lblStatus.Location = new Point(13, 300);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(272, 30);
+            lblStatus.Padding = new Padding(5);
+            lblStatus.Size = new Size(475, 40);
             lblStatus.TabIndex = 4;
             lblStatus.Text = "Status: Ready";
             // 
             // txtDeviceInfo
             // 
-            txtDeviceInfo.Location = new Point(12, 279);
+            txtDeviceInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtDeviceInfo.BackColor = Color.White;
+            txtDeviceInfo.Font = new Font("Segoe UI", 10F);
+            txtDeviceInfo.Location = new Point(13, 343);
             txtDeviceInfo.Multiline = true;
             txtDeviceInfo.Name = "txtDeviceInfo";
             txtDeviceInfo.ReadOnly = true;
             txtDeviceInfo.ScrollBars = ScrollBars.Vertical;
-            txtDeviceInfo.Size = new Size(357, 100);
+            txtDeviceInfo.Size = new Size(475, 150);
             txtDeviceInfo.TabIndex = 5;
             // 
             // txtBattery
             // 
-            txtBattery.Location = new Point(14, 385);
+            txtBattery.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBattery.BackColor = Color.White;
+            txtBattery.Font = new Font("Segoe UI", 10F);
+            txtBattery.Location = new Point(13, 573);
             txtBattery.Name = "txtBattery";
             txtBattery.ReadOnly = true;
-            txtBattery.Size = new Size(355, 27);
+            txtBattery.Size = new Size(475, 25);
             txtBattery.TabIndex = 6;
             // 
             // txtSignal
             // 
-            txtSignal.Location = new Point(401, 279);
+            txtSignal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtSignal.BackColor = Color.White;
+            txtSignal.Font = new Font("Segoe UI", 10F);
+            txtSignal.Location = new Point(494, 73);
             txtSignal.Multiline = true;
             txtSignal.Name = "txtSignal";
             txtSignal.ReadOnly = true;
             txtSignal.ScrollBars = ScrollBars.Vertical;
-            txtSignal.Size = new Size(692, 270);
+            txtSignal.Size = new Size(888, 224);
             txtSignal.TabIndex = 8;
-            // 
-            // txtLog
-            // 
-            txtLog.Location = new Point(401, 50);
-            txtLog.Multiline = true;
-            txtLog.Name = "txtLog";
-            txtLog.ReadOnly = true;
-            txtLog.ScrollBars = ScrollBars.Vertical;
-            txtLog.Size = new Size(692, 223);
-            txtLog.TabIndex = 0;
+            txtSignal.TextChanged += txtSignal_TextChanged;
             // 
             // btnRecord
             // 
-            btnRecord.Location = new Point(605, 555);
+            btnRecord.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnRecord.BackColor = Color.FromArgb(50, 100, 180);
+            btnRecord.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 130, 210);
+            btnRecord.FlatStyle = FlatStyle.Flat;
+            btnRecord.Font = new Font("Segoe UI", 10F);
+            btnRecord.ForeColor = Color.White;
+            btnRecord.Location = new Point(1245, 756);
+            btnRecord.Margin = new Padding(5, 5, 20, 5);
             btnRecord.Name = "btnRecord";
-            btnRecord.Size = new Size(100, 30);
+            btnRecord.Size = new Size(120, 40);
             btnRecord.TabIndex = 9;
             btnRecord.Text = "Record";
-            btnRecord.UseVisualStyleBackColor = true;
+            btnRecord.UseVisualStyleBackColor = false;
             btnRecord.Click += btnRecord_Click;
             // 
             // btnStopRecord
             // 
-            btnStopRecord.Location = new Point(840, 555);
+            btnStopRecord.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnStopRecord.BackColor = Color.FromArgb(50, 100, 180);
+            btnStopRecord.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 130, 210);
+            btnStopRecord.FlatStyle = FlatStyle.Flat;
+            btnStopRecord.Font = new Font("Segoe UI", 10F);
+            btnStopRecord.ForeColor = Color.White;
+            btnStopRecord.Location = new Point(351, 756);
+            btnStopRecord.Margin = new Padding(5, 5, 20, 5);
             btnStopRecord.Name = "btnStopRecord";
-            btnStopRecord.Size = new Size(100, 30);
+            btnStopRecord.Size = new Size(120, 40);
             btnStopRecord.TabIndex = 10;
             btnStopRecord.Text = "Stop record";
-            btnStopRecord.UseVisualStyleBackColor = true;
+            btnStopRecord.UseVisualStyleBackColor = false;
             btnStopRecord.Click += btnStopRecord_Click;
             // 
-            // MainForm
+            // tableLayoutPanel1
             // 
-            ClientSize = new Size(1106, 595);
-            Controls.Add(btnStopRecord);
-            Controls.Add(btnRecord);
-            Controls.Add(btnStartScan);
-            Controls.Add(btnStopScan);
-            Controls.Add(lstDevices);
-            Controls.Add(lblStatus);
-            Controls.Add(txtDeviceInfo);
-            Controls.Add(txtBattery);
-            Controls.Add(txtSignal);
-            Controls.Add(txtLog);
-            Name = "MainForm";
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
+            tableLayoutPanel1.Controls.Add(btnStartScan, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnStopScan, 1, 0);
+            tableLayoutPanel1.Controls.Add(lstDevices, 0, 1);
+            tableLayoutPanel1.Controls.Add(lblStatus, 0, 2);
+            tableLayoutPanel1.Controls.Add(txtDeviceInfo, 0, 3);
+            tableLayoutPanel1.Controls.Add(txtBattery, 0, 4);
+            tableLayoutPanel1.Controls.Add(btnRecord, 1, 5);
+            tableLayoutPanel1.Controls.Add(btnStopRecord, 0, 5);
+            tableLayoutPanel1.Controls.Add(txtSignal, 1, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(10);
+            tableLayoutPanel1.RowCount = 6;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.66667F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.66667F));
+            tableLayoutPanel1.Size = new Size(1395, 811);
+            tableLayoutPanel1.TabIndex = 11;
+            // 
+            // Monitor
+            // 
+            BackColor = Color.FromArgb(230, 240, 250);
+            ClientSize = new Size(1395, 811);
+            Controls.Add(tableLayoutPanel1);
+            Font = new Font("Segoe UI", 10F);
+            Name = "Monitor";
             Text = "Brainbit Monitor";
             FormClosed += MainForm_FormClosed;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
     }
 }

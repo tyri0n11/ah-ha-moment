@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "bdd4xJ6tGrw=",
+  "dgSpecHash": "s0RfyukSuas=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj",
+  "projectFilePath": "C:\\Users\\kn183\\ah-ha-moment\\ah-ha-moment\\ah-ha-moment.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\USER\\.nuget\\packages\\xneurosdk\\1.0.6.27\\xneurosdk.1.0.6.27.nupkg.sha512"
+    "C:\\Users\\kn183\\.nuget\\packages\\xneurosdk\\1.0.6.27\\xneurosdk.1.0.6.27.nupkg.sha512"
   ],
   "logs": []
 }
