@@ -16,7 +16,7 @@ namespace ah_ha_moment
         private static Random rng = new Random();
         private static List<Quizz> questions = new List<Quizz>();
         private Quizz currentQuiz = null;
-        public static string dataQuestion = "C:\\BrainLife Codespace\\aha_dataset.txt";
+        public static string dataQuestion = "C:\\Projects\\ah-ha-moment\\ah-ha-moment\\aha_dataset.txt";
         
         public GamingScreen()
         {

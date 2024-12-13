@@ -22,8 +22,8 @@ namespace ah_ha_moment
             timeRemainStart.Text = timeStart--.ToString();
             if (timeStart == -1)
             {
-                GamingScreen f2 = new GamingScreen();
-                f2.Show();
+                GamingScreen game = new GamingScreen();
+                game.Show();
                 //Monitor monitor = new Monitor();
                 //monitor.Show();
                 this.Hide();

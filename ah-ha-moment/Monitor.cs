@@ -8,8 +8,7 @@ namespace ah_ha_moment
         private BrainBitSensor sensor;
         private Scanner scanner;
         private StreamWriter writer;
-        private String fileName;
-        private String filePath = @"C:\Users\USER\Documents\data-sets\"; //available for Windows
+        private string filePath = @"C:\Users\USER\Documents\data-sets\"; //available for Windows
         GreetingScreen screen;
         public Monitor()
         {
@@ -18,7 +17,7 @@ namespace ah_ha_moment
                 if (fileNameForm.ShowDialog() == DialogResult.OK)
                 {
                     InitializeComponent();
-                    fileName = fileNameForm.FileName;
+                    string fileName = fileNameForm.FileName;
                     scanner = new Scanner(SensorFamily.SensorLEBrainBit);
                     scanner.EventSensorsChanged += OnDeviceFound;
                     if (!Directory.Exists(filePath))
