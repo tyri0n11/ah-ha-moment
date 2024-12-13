@@ -7,7 +7,7 @@ namespace ah_ha_moment
 
     public partial class GamingScreen : Form
     {
-        private static int TIME_INTERVAL = 60000; 
+        private static int TIME_INTERVAL = 60000;
         private int timeRemaining = TIME_INTERVAL;
         private System.Windows.Forms.Timer countDownTimer;
         private int currentProblemIndex = 0;
@@ -15,9 +15,9 @@ namespace ah_ha_moment
         private int incorrectAnswers = 0;
         private static Random rng = new Random();
         private static List<Quizz> questions = new List<Quizz>();
-        private Quizz currentQuiz = null;
+        private Quizz currentQuiz;
         public static string dataQuestion = "C:\\BrainLife Codespace\\ahha-questions.txt";
-        
+
         public GamingScreen()
         {
             InitializeComponent();
@@ -25,7 +25,10 @@ namespace ah_ha_moment
             initQuestion();
             Shuffle(questions);
             DisplayCurrentQuestion();
+
         }
+
+
 
         private void initQuestion()
         {
@@ -102,13 +105,32 @@ namespace ah_ha_moment
         {
             if (currentProblemIndex >= questions.Count)
             {
-                AppManager.isRecord = false;
-                MessageBox.Show($"Quiz completed!\nCorrect: {correctAnswers}\nIncorrect: {incorrectAnswers}", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                countDownTimer.Stop();
-                Dispose();
-                return;
+                try
+                {
+                    AppManager.isRecord = false;
+                    AppManager.StopCollectingSignal();
+                    AppManager.UpdateResult("=== Timestamp Processor ===");
+
+                    // Create a copy of records for analysis
+                    var recordsCopy = new List<Record>(AppManager.Records);
+
+                    // Perform analysis (you may want to move this to a separate method)
+                    AppManager.AnalyzeRecordedData();
+
+                    AppManager.StopCollectingSignal();
+                    MessageBox.Show($"Quiz completed!\nCorrect: {correctAnswers}\nIncorrect: {incorrectAnswers}", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    countDownTimer.Stop();
+                    Dispose();
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                
             }
-            else {
+            else
+            {
                 AppManager.isRecord = true;
                 Quizz currentQuiz = questions[currentProblemIndex];
                 questionLabel.Text = currentQuiz.Question;
@@ -119,13 +141,14 @@ namespace ah_ha_moment
                 GameSessionData.QuestionOrder = currentProblemIndex + 1;
                 GameSessionData.Question = currentQuiz.Question;
                 GameSessionData.IsCorrect = false;
+                GameSessionData.IsSubmitted = false;
                 countDownTimer.Stop();
                 timeRemaining = TIME_INTERVAL;
                 UpdateTimerDisplay();
                 countDownTimer.Start();
             }
 
-            
+
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -137,6 +160,7 @@ namespace ah_ha_moment
             GameSessionData.QuestionOrder = currentProblemIndex + 1;
             GameSessionData.Question = currentQuiz.Question;
             GameSessionData.IsCorrect = isCorrect;
+            GameSessionData.IsSubmitted = true;
 
             if (isCorrect)
             {
@@ -153,8 +177,8 @@ namespace ah_ha_moment
             DisplayCurrentQuestion();
         }
 
-     
-       
+
+
     }
 
     public class Quizz
@@ -175,10 +199,8 @@ namespace ah_ha_moment
     {
         public static int QuestionOrder { get; set; }
         public static string Question { get; set; }
+        public static string Hint { get; set; }
         public static bool IsCorrect { get; set; }
+        public static bool IsSubmitted { get; set; }
     }
-
-    
-  
-
 }

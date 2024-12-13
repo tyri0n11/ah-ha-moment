@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ScottPlot" Version="5.0.47" />
     <PackageReference Include="XNeuroSDK" Version="1.0.6.27" />
   </ItemGroup>
 

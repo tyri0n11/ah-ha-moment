@@ -8,7 +8,15 @@ namespace ah_ha_moment
         public GreetingScreen()
         {
             InitializeComponent();
+            storeGlobal();
             StartPosition = FormStartPosition.CenterScreen;
+        }
+        void storeGlobal()
+        {
+            GameSessionData.Question = "default";
+            GameSessionData.QuestionOrder = 0;
+            GameSessionData.IsSubmitted = false;
+            GameSessionData.IsCorrect = false;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -23,7 +31,9 @@ namespace ah_ha_moment
             {
                 GamingScreen game = new GamingScreen();
                 game.Show();
-                this.Hide();
+                Hide();
+
+                AppManager.StartCollectingSignal();
                 //settings.Close();
             }
 
