@@ -1,5 +1,6 @@
 ﻿using ScottPlot;
 using NeuroSDK;
+using System.Text;
 
 namespace ah_ha_moment
 {
@@ -134,6 +135,8 @@ namespace ah_ha_moment
 
         // File path for data storage
         private static string filePath = @"C:\Users\USER\Documents\data-sets\";
+        private static string fileCSV = " ";
+        private static string fileTxt = " ";
 
         // Initialize scanner and prepare for data collection
         public static void InitializeSensor(string fileName)
@@ -142,10 +145,11 @@ namespace ah_ha_moment
             {
                 Directory.CreateDirectory(filePath);
             }
-
             Scanner = new Scanner(SensorFamily.SensorLEBrainBit);
             Scanner.EventSensorsChanged += OnDeviceFound;
             Records = new List<Record>();
+            fileCSV = $"{filePath}{fileName}_{GetTimestamp()}.csv";
+            fileTxt = $"{filePath}{fileName}_{GetTimestamp()}.txt";
             Writer = new StreamWriter($"{filePath}{fileName}_{GetTimestamp()}.csv");
             Writer.WriteLine("Timestamp,O1,O2,T3,T4,Order,Question,IsCorrect, IsSubmitted");
         }
@@ -227,6 +231,8 @@ namespace ah_ha_moment
             if (Sensor != null)
             {
                 Sensor.ExecCommand(SensorCommand.CommandStopSignal);
+                Writer.Flush();
+                Writer.Dispose();
             }
         }
 
@@ -246,116 +252,140 @@ namespace ah_ha_moment
                 Records.Add(record);
             }
         }
-        public static void AnalyzeRecordedData()
+        public async static void AnalyzeRecordedData()
         {
+            string outputFilePath = fileTxt; // Path to save the output text file
+            var outputBuilder = new StringBuilder(); // StringBuilder to collect output data
+
+            void UpdateMessage(string message)
+            {
+                UpdateResult(message);
+                outputBuilder.AppendLine(message); // Add message to output builder
+            }
+
+            UpdateMessage("Processing data.... please wait");
+            await Task.Delay(5000);
+
             try
             {
-                UpdateResult("=== Timestamp Processor ===");
+                UpdateMessage("=== Timestamp Processor ===");
 
-                // Make a thread-safe copy of the records list
-                List<Record> recordsCopy;
-                lock (Records)
+                // Check if the CSV file exists
+                if (!File.Exists(fileCSV))
                 {
-                    recordsCopy = new List<Record>(Records);
-                }
-
-                // Proceed with analysis on the copied list
-                foreach (var record in recordsCopy)
-                {
-                    try
-                    {
-                        record.Milliseconds = TimestampToMilliseconds(record.Timestamp);
-                    }
-                    catch (Exception ex)
-                    {
-                        UpdateResult($"Error converting timestamp '{record.Timestamp}': {ex.Message}");
-                        record.Milliseconds = 0;
-                    }
-                }
-
-                if (recordsCopy.Count == 0)
-                {
-                    UpdateResult("No records to analyze.");
+                    UpdateMessage($"CSV file not found: {fileCSV}");
+                    File.WriteAllText(outputFilePath, outputBuilder.ToString()); // Write output to file
                     return;
                 }
 
-                // Sort the copied records by Milliseconds
-                recordsCopy = recordsCopy.OrderBy(r => r.Milliseconds).ToList();
+                long? previousMilliseconds = null;
+                long startTime = 0;
+                bool isFirstRecord = true;
+                var timeDiffs = new List<long>();
+                var summaryDict = new Dictionary<int, int>();
 
-                // Calculate Time_Diff
-                for (int i = 0; i < recordsCopy.Count; i++)
+                try
                 {
-                    if (i == 0)
+                    var lines = File.ReadLines(fileCSV).Skip(1); // Skip header row
+
+                    foreach (var line in lines)
                     {
-                        recordsCopy[i].TimeDiff = null; // First record has no previous record
+                        var fields = line.Split(',');
+                        if (fields.Length < 1) continue;
+
+                        string timestamp = fields[0].Trim();
+                        long currentMilliseconds;
+
+                        // Convert timestamp to milliseconds
+                        try
+                        {
+                            currentMilliseconds = TimestampToMilliseconds(timestamp);
+                        }
+                        catch (Exception ex)
+                        {
+                            UpdateMessage($"Error converting timestamp '{timestamp}': {ex.Message}");
+                            continue;
+                        }
+
+                        // Calculate time difference
+                        if (isFirstRecord)
+                        {
+                            startTime = currentMilliseconds;
+                            isFirstRecord = false;
+                        }
+                        else
+                        {
+                            if (previousMilliseconds.HasValue)
+                            {
+                                long timeDiff = currentMilliseconds - previousMilliseconds.Value;
+                                timeDiffs.Add(timeDiff);
+                            }
+                        }
+
+                        // Calculate 'Second' and update summary
+                        int second = (int)((currentMilliseconds - startTime) / 1000) + 1;
+                        if (summaryDict.ContainsKey(second))
+                        {
+                            summaryDict[second]++;
+                        }
+                        else
+                        {
+                            summaryDict[second] = 1;
+                        }
+
+                        // Update previous timestamp
+                        previousMilliseconds = currentMilliseconds;
                     }
-                    else
-                    {
-                        recordsCopy[i].TimeDiff = recordsCopy[i].Milliseconds - recordsCopy[i - 1].Milliseconds;
-                    }
+                }
+                catch (Exception ex)
+                {
+                    UpdateMessage($"Error reading CSV file: {ex.Message}");
+                    File.WriteAllText(outputFilePath, outputBuilder.ToString()); // Write output to file
+                    return;
+                }
+
+                if (!timeDiffs.Any())
+                {
+                    UpdateMessage("No valid time differences to calculate statistics.");
+                    File.WriteAllText(outputFilePath, outputBuilder.ToString()); // Write output to file
+                    return;
                 }
 
                 // Calculate average time difference and sampling rate
-                var timeDiffs = recordsCopy.Where(r => r.TimeDiff.HasValue).Select(r => r.TimeDiff.Value).ToList();
-
-                if (timeDiffs.Count == 0)
-                {
-                    UpdateResult("No valid time differences to calculate statistics.");
-                    return;
-                }
-
                 double averageTimeDifference = timeDiffs.Average();
-                double samplingRate = 1000.0 / averageTimeDifference; // Samples per second
+                double samplingRate = 1000.0 / averageTimeDifference;
 
-                UpdateResult($"\nAverage Time Difference: {averageTimeDifference:F2} ms");
-                UpdateResult($"Sampling Rate: {samplingRate:F0} Hz");
+                UpdateMessage($"\nAverage Time Difference: {averageTimeDifference:F2} ms");
+                UpdateMessage($"Sampling Rate: {samplingRate:F0} Hz");
 
-                // --- Additional Part: Create Summary Table ---
-                // Determine the start time
-                long startTime = recordsCopy.Min(r => r.Milliseconds);
+                // Display summary table
+                int maxSecond = summaryDict.Keys.Max();
+                UpdateMessage("\n=== Summary of Samples per Second ===");
+                UpdateMessage("Second\tSample Count");
 
-                // Create 'Second' column
-                foreach (var record in recordsCopy)
-                {
-                    record.Second = (int)((record.Milliseconds - startTime) / 1000) + 1;
-                }
-
-                // Determine the maximum second value to cover the entire dataset
-                int maxSecond = recordsCopy.Max(r => r.Second);
-
-                // Group by 'Second' and count samples
-                var summaryDict = recordsCopy.GroupBy(r => r.Second)
-                                            .ToDictionary(g => g.Key, g => g.Count());
-
-                // Ensure all seconds up to maxSecond are represented
-                var summary = new List<(int Second, int SampleCount)>();
                 for (int sec = 1; sec <= maxSecond; sec++)
                 {
-                    summary.Add((sec, summaryDict.ContainsKey(sec) ? summaryDict[sec] : 0));
+                    int sampleCount = summaryDict.ContainsKey(sec) ? summaryDict[sec] : 0;
+                    UpdateMessage($"{sec}\t{sampleCount}");
                 }
 
-                // Display the summary table
-                UpdateResult("\n=== Summary of Samples per Second ===");
-                UpdateResult("Second\tSample Count");
-                foreach (var item in summary)
-                {
-                    UpdateResult($"{item.Second}\t{item.SampleCount}");
-                }
+                // Calculate average and standard deviation of sampling rates
+                double averageSamplingRateSummary = summaryDict.Values.Average();
+                double stdDevSamplingRateSummary = Math.Sqrt(summaryDict.Values.Average(s => Math.Pow(s - averageSamplingRateSummary, 2)));
 
-                // Calculate average and standard deviation of the sampling rates
-                double averageSamplingRateSummary = summary.Average(s => s.SampleCount);
-                double stdDevSamplingRateSummary = Math.Sqrt(summary.Average(s => Math.Pow(s.SampleCount - averageSamplingRateSummary, 2)));
+                UpdateMessage($"\nAverage Sampling Rate: {averageSamplingRateSummary:F2} samples/second");
+                UpdateMessage($"Standard Deviation of Sampling Rate: {stdDevSamplingRateSummary:F2} samples/second");
 
-                UpdateResult($"\nAverage Sampling Rate: {averageSamplingRateSummary:F2} samples/second");
-                UpdateResult($"Standard Deviation of Sampling Rate: {stdDevSamplingRateSummary:F2} samples/second");
-
-                UpdateResult("\nAnalysis Complete.");
+                UpdateMessage("\nAnalysis Complete.");
             }
             catch (Exception ex)
             {
-                UpdateResult($"An error occurred during analysis: {ex.Message}");
+                UpdateMessage($"An error occurred during analysis: {ex.Message}");
                 Console.WriteLine($"An error occurred during analysis: {ex}");
             }
+
+            // Write all collected output to the text file
+            File.WriteAllText(outputFilePath, outputBuilder.ToString());
         }
 
         // Method to clear records after analysis if needed

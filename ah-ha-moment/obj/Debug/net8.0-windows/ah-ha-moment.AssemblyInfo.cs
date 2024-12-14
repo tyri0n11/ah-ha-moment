@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ah-ha-moment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+082cd3e7e93c8ad86a501d7187c00511a63e88a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c13d4f1064490a07aa7a39d92813f2cfff8e5b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("ah-ha-moment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ah-ha-moment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,13 +1,12 @@
 ﻿
 using System.Text.RegularExpressions;
-using NeuroSDK;
 
 namespace ah_ha_moment
 {
 
     public partial class GamingScreen : Form
     {
-        private static int TIME_INTERVAL = 30000;
+        private static int TIME_INTERVAL = 45000;
         private int timeRemaining = TIME_INTERVAL;
         private System.Windows.Forms.Timer countDownTimer;
         private int currentProblemIndex = 0;
@@ -98,13 +97,13 @@ namespace ah_ha_moment
             int seconds = (timeRemaining % 60000) / 1000;
 
             timerLabel.Text = $"{minutes:D2}:{seconds:D2}";
-            if (timeRemaining <= TIME_INTERVAL/2)
+            if (timeRemaining <= ((TIME_INTERVAL*2)/3))
             {
                 hintLabel.Visible = true;
             }
         }
 
-        private void DisplayCurrentQuestion()
+        private async void DisplayCurrentQuestion()
         {
             if (currentProblemIndex >= questions.Count)
             {
@@ -112,17 +111,12 @@ namespace ah_ha_moment
                 {
                     AppManager.isRecord = false;
                     AppManager.StopCollectingSignal();
-                    AppManager.UpdateResult("=== Timestamp Processor ===");
-
-                    // Create a copy of records for analysis
-                    var recordsCopy = new List<Record>(AppManager.Records);
-
-                    // Perform analysis (you may want to move this to a separate method)
-                    AppManager.AnalyzeRecordedData();
-
-                    AppManager.StopCollectingSignal();
                     MessageBox.Show($"Quiz completed!\nCorrect: {correctAnswers}\nIncorrect: {incorrectAnswers}", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     countDownTimer.Stop();
+                    countDownTimer.Dispose();
+                    AppManager.AnalyzeRecordedData();
+                    await Task.Delay(3000);
+                    Hide();
                     Dispose();
                     return;
                 }
