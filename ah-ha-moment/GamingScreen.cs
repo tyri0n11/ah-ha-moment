@@ -7,7 +7,7 @@ namespace ah_ha_moment
 
     public partial class GamingScreen : Form
     {
-        private static int TIME_INTERVAL = 60000;
+        private static int TIME_INTERVAL = 30000;
         private int timeRemaining = TIME_INTERVAL;
         private System.Windows.Forms.Timer countDownTimer;
         private int currentProblemIndex = 0;
@@ -73,10 +73,10 @@ namespace ah_ha_moment
 
         private void InitializeTimer()
         {
-            countDownTimer = new System.Windows.Forms.Timer { Interval = 100 };
+            countDownTimer = new System.Windows.Forms.Timer { Interval = 1000 };
             countDownTimer.Tick += (sender, e) =>
             {
-                timeRemaining -= 100;
+                timeRemaining -=1000;
                 UpdateTimerDisplay();
 
                 if (timeRemaining <= 0)
@@ -96,9 +96,12 @@ namespace ah_ha_moment
         {
             int minutes = timeRemaining / 60000;
             int seconds = (timeRemaining % 60000) / 1000;
-            int milliseconds = timeRemaining % 1000;
 
-            timerLabel.Text = $"{minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+            timerLabel.Text = $"{minutes:D2}:{seconds:D2}";
+            if (timeRemaining <= TIME_INTERVAL/2)
+            {
+                hintLabel.Visible = true;
+            }
         }
 
         private void DisplayCurrentQuestion()
@@ -132,9 +135,10 @@ namespace ah_ha_moment
             else
             {
                 AppManager.isRecord = true;
-                Quizz currentQuiz = questions[currentProblemIndex];
+                currentQuiz = questions[currentProblemIndex];
                 questionLabel.Text = currentQuiz.Question;
-                hintLabel.Text = currentQuiz.Hint;
+                hintLabel.Text = "Hint";
+                hintLabel.Visible = false;
                 answerBox.Text = "";
                 answerBox.Focus();
 
@@ -149,6 +153,19 @@ namespace ah_ha_moment
             }
 
 
+        }
+        private void HintLabel_Click(object sender, EventArgs e)
+        {
+            if (hintLabel.Text == "Hint")
+            {
+                hintLabel.Text = currentQuiz.Hint;
+                hintLabel.ForeColor = Color.Red;
+            }
+            else
+            {
+                hintLabel.Text = "Hint";
+                hintLabel.ForeColor = Color.Blue;
+            }
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)

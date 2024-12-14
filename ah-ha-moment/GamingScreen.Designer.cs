@@ -51,15 +51,17 @@ namespace ah_ha_moment
             // 
             // hintLabel
             // 
+            hintLabel.Cursor = Cursors.Hand;
             hintLabel.Dock = DockStyle.Bottom;
-            hintLabel.Font = new Font("Arial", 12F);
+            hintLabel.Font = new Font("Arial", 16F);
             hintLabel.ForeColor = Color.Red;
             hintLabel.Location = new Point(20, 191);
             hintLabel.Name = "hintLabel";
             hintLabel.Size = new Size(754, 23);
             hintLabel.TabIndex = 0;
-            hintLabel.Text = "Think of an equation where the number is multiplied by 3 to get 24.";
+            hintLabel.Text = "Hint";
             hintLabel.TextAlign = ContentAlignment.MiddleCenter;
+            hintLabel.Click += HintLabel_Click;
             // 
             // questionLabel
             // 
@@ -68,7 +70,7 @@ namespace ah_ha_moment
             questionLabel.ForeColor = Color.Black;
             questionLabel.Location = new Point(20, 20);
             questionLabel.Name = "questionLabel";
-            questionLabel.Size = new Size(754, 23);
+            questionLabel.Size = new Size(754, 140);
             questionLabel.TabIndex = 1;
             questionLabel.Text = "If you multiply me by 3, I become 24. What number am I?";
             questionLabel.TextAlign = ContentAlignment.MiddleCenter;
