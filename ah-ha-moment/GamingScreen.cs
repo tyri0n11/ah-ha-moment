@@ -15,6 +15,8 @@ namespace ah_ha_moment
         private static Random rng = new Random();
         private static List<Quizz> questions = new List<Quizz>();
         private Quizz currentQuiz;
+
+
         public static string dataQuestion = "C:\\BrainLife Codespace\\ahha-questions.txt";
 
         public GamingScreen()
@@ -105,6 +107,7 @@ namespace ah_ha_moment
 
         private async void DisplayCurrentQuestion()
         {
+            GameSessionData.EventCode = "Reading question";
             if (currentProblemIndex >= questions.Count)
             {
                 try
@@ -115,7 +118,6 @@ namespace ah_ha_moment
                     countDownTimer.Stop();
                     countDownTimer.Dispose();
                     AppManager.AnalyzeRecordedData();
-                    await Task.Delay(3000);
                     Hide();
                     Dispose();
                     return;
@@ -138,8 +140,6 @@ namespace ah_ha_moment
 
                 GameSessionData.QuestionOrder = currentProblemIndex + 1;
                 GameSessionData.Question = currentQuiz.Question;
-                GameSessionData.IsCorrect = false;
-                GameSessionData.IsSubmitted = false;
                 countDownTimer.Stop();
                 timeRemaining = TIME_INTERVAL;
                 UpdateTimerDisplay();
@@ -153,16 +153,23 @@ namespace ah_ha_moment
             if (hintLabel.Text == "Hint")
             {
                 hintLabel.Text = currentQuiz.Hint;
-                hintLabel.ForeColor = Color.Red;
+                GameSessionData.EventCode = "Reading hint";
             }
             else
             {
                 hintLabel.Text = "Hint";
-                hintLabel.ForeColor = Color.Blue;
             }
         }
+        string GenerateQuestResult(bool condition)
+        {
+            if (condition)
+            {
+                return "correct";
+            }
+            return "incorrect";
+        }
 
-        private void SubmitButton_Click(object sender, EventArgs e)
+        private async void SubmitButton_Click(object sender, EventArgs e)
         {
             currentQuiz = questions[currentProblemIndex];
             string userAnswer = answerBox.Text.Trim();
@@ -170,18 +177,20 @@ namespace ah_ha_moment
 
             GameSessionData.QuestionOrder = currentProblemIndex + 1;
             GameSessionData.Question = currentQuiz.Question;
-            GameSessionData.IsCorrect = isCorrect;
-            GameSessionData.IsSubmitted = true;
-
+            //GameSessionData.IsCorrect = isCorrect;
+            GameSessionData.EventCode = $"Click Submit, {GenerateQuestResult(isCorrect)}";
+            await Task.Delay(10);
             if (isCorrect)
             {
                 correctAnswers++;
                 MessageBox.Show("Correct!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GameSessionData.EventCode = " ";
             }
             else
             {
                 incorrectAnswers++;
                 MessageBox.Show($"Incorrect! The correct answer is: {currentQuiz.Answer}", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GameSessionData.EventCode = " ";
             }
 
             currentProblemIndex++;
@@ -210,7 +219,7 @@ namespace ah_ha_moment
     {
         public static int QuestionOrder { get; set; }
         public static string Question { get; set; }
-        public static string Hint { get; set; }
+        public static string EventCode { get; set; }
         public static bool IsCorrect { get; set; }
         public static bool IsSubmitted { get; set; }
     }

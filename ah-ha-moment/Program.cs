@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace ah_ha_moment
 {
     internal static class Program

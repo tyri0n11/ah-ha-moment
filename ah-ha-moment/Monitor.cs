@@ -125,8 +125,6 @@ namespace ah_ha_moment
         public static BrainBitSensor Sensor { get; private set; }
         public static Scanner Scanner { get; private set; }
         public static StreamWriter Writer { get; private set; }
-        public static List<Record> Records { get; private set; }
-
         // UI Update Delegates
         public static Action<string> UpdateStatusAction { get; set; }
         public static Action<string> UpdateBatteryAction { get; set; }
@@ -147,11 +145,10 @@ namespace ah_ha_moment
             }
             Scanner = new Scanner(SensorFamily.SensorLEBrainBit);
             Scanner.EventSensorsChanged += OnDeviceFound;
-            Records = new List<Record>();
             fileCSV = $"{filePath}{fileName}_{GetTimestamp()}.csv";
             fileTxt = $"{filePath}{fileName}_{GetTimestamp()}.txt";
             Writer = new StreamWriter($"{filePath}{fileName}_{GetTimestamp()}.csv");
-            Writer.WriteLine("Timestamp,O1,O2,T3,T4,Order,Question,IsCorrect, IsSubmitted");
+            Writer.WriteLine("Timestamp,O1,O2,T3,T4,Order,Question,Event,Result");
         }
 
         // Scan for available devices
@@ -241,15 +238,13 @@ namespace ah_ha_moment
         {
             foreach (BrainBitSignalData signal in data)
             {
-                var record = new Record { Timestamp = GetTimestampDetail() };
-                string temp = $"{record.Timestamp},{signal.O1 * 1e3},{signal.O2 * 1e3},{signal.T3 * 1e3},{signal.T4 * 1e3}," +
+                string temp = $"{GetTimestampDetail()},{signal.O1 * 1e3},{signal.O2 * 1e3},{signal.T3 * 1e3},{signal.T4 * 1e3}," +
                     $"{RemoveCommas(GameSessionData.QuestionOrder.ToString())}," +
                     $"{RemoveCommas(GameSessionData.Question.ToString())}," +
-                    $"{GameSessionData.IsCorrect}," + $"{CheckSubmit(GameSessionData.IsSubmitted)}";
+                    $"{GameSessionData.EventCode}";
 
                 UpdateSignal(temp);
                 Writer.WriteLine(temp);
-                Records.Add(record);
             }
         }
         public async static void AnalyzeRecordedData()
@@ -386,15 +381,6 @@ namespace ah_ha_moment
 
             // Write all collected output to the text file
             File.WriteAllText(outputFilePath, outputBuilder.ToString());
-        }
-
-        // Method to clear records after analysis if needed
-        public static void ClearRecords()
-        {
-            lock (Records)
-            {
-                Records.Clear();
-            }
         }
 
         // Helper methods for UI Updates

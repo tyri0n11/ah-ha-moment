@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using NeuroSDK;
-namespace ah_ha_moment
+﻿    namespace ah_ha_moment
 {
     partial class GamingScreen
     {
